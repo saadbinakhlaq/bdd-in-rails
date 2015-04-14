@@ -32,6 +32,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'haml-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -51,5 +53,5 @@ end
 
 group :test do
   gem 'cucumber-rails', '~>1.4.0', require: false
-  gem 'database_cleaner', '~> 0.9.1'
+  gem 'database_cleaner', '~> 1.2.0'
 end
