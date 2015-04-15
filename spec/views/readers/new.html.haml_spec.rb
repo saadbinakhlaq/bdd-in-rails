@@ -6,6 +6,7 @@ describe 'readers/new.html.haml' do
     assign(:reader, reader)
     render
   end
+
   it 'has new reader form' do
     expect(rendered).to have_selector('form#new_reader')
   end
