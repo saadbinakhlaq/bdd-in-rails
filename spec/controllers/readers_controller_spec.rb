@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ReadersController do
   describe 'GET new' do
-    let!(:reader) { mock_model(Reader).as_new_record }
+    let!(:reader) { mock_model('Reader').as_new_record }
 
     before :each do
       Reader.stub(:new).and_return(reader)

@@ -9,6 +9,9 @@ class ReadersController < ApplicationController
     redirect_to root_url, notice: 'You are registered'
   end
 
+  def index
+  end
+
   private
 
   def reader_params
