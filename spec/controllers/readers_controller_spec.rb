@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ReadersController do
   describe 'GET new' do
-    let!(:reader) { mock_model('Reader').as_new_record }
+    let!(:reader) { mock_model(Reader).as_new_record }
 
     before :each do
       Reader.stub(:new).and_return(reader)
@@ -55,6 +55,23 @@ describe ReadersController do
 
       it 'assigns a success flash message' do
         expect(flash[:notice]).not_to be_nil
+      end
+    end
+
+    context 'when save message returns false' do
+      before :each do
+        reader.stub(:save).and_return(false)
+        post :create, reader: params
+      end
+
+      it 'renders new template' do
+        expect(response).to render_template :new
+      end
+      it 'assigns reader variable to view' do
+        expect(assigns[:reader]).to eq(reader)
+      end
+      it 'assigns error flash message' do
+        expect(flash[:error]).not_to be_nil
       end
     end
   end

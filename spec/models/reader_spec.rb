@@ -2,6 +2,32 @@ require 'spec_helper'
 
 describe Reader do
   let(:reader) { Reader.new }
+
+  describe 'validations' do
+    before :each do
+      @params = {
+        email: 'email@email.com',
+        password: 'password',
+        password_confirmation: 'password'
+      }
+
+    end
+
+    it { should validate_presence_of(:email) }
+
+    it { should validate_presence_of(:password) }
+
+    it { should validate_uniqueness_of(:email) }
+
+    it { should validate_confirmation_of(:password) }
+
+    it 'is invalid if email is invalid' do
+      @params[:email] = 'email'
+      reader = Reader.new(@params)
+      expect(reader.valid?).to be_false
+    end
+  end
+
   it 'is an ActiveRecord model' do
     expect(Reader.superclass).to be(ActiveRecord::Base)
   end
